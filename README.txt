@@ -1,1 +1,0 @@
-Baekjoon Algorithm
