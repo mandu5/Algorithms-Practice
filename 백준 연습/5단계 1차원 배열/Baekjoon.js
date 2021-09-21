@@ -112,7 +112,7 @@ for (let i = 1; i <= num; i++) {
 // 7번 (평균은 넘겠지)
 let input = require('fs').readFileSync('/dev/stdin').toString().split('\n');
 
-let num = input[0];
+let num = input[0] * 1;
 
 for (let i = 1; i <= num; i++) {
     let score = input[i].split(' ');    //공백
@@ -133,4 +133,3 @@ for (let i = 1; i <= num; i++) {
                                                        
     console.log(result + "%");
 }
-
