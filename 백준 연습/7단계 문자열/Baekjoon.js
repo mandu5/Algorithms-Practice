@@ -74,3 +74,91 @@ for (let j = 0; j < 26; j++) {  // 중복이 있다면 isSame = true
 }
 
 console.log(isSame ? "?" : String.fromCharCode(index + 65));
+
+
+// 6번 (단어의 개수)
+let input = require('fs').readFileSync('/dev/stdin').toString().trim().split(" "); //.(trim) 시작과 끝의 공백 제거
+ 
+console.log(input[0] === "" ? 0 : input.length);
+
+
+// 7번 (상수)
+let input = require('fs').readFileSync('/dev/stdin').toString().trim().split(" ");
+
+const [a, b] = input.map(v => [...v].reverse().join(""));
+
+console.log(a > b ? a : b); // 삼합 연산자, or Math.max 사용
+// console.log(Math.max(a, b));
+
+
+// 8번 (다이얼)
+let input = require('fs').readFileSync('/dev/stdin').toString().split("");
+input.pop();
+
+let result = 0;
+
+for (let i = 0; i < input.length; i++) {
+  if (input[i] === 'A' || input[i] === 'B' || input[i] === 'C') {
+    result = result + 3;
+  } else if (input[i] === 'D' || input[i] === 'E' || input[i] === 'F') {
+    result = result + 4;
+  } else if (input[i] === 'G' || input[i] === 'H' || input[i] === 'I') {
+    result = result + 5;
+  } else if (input[i] === 'J' || input[i] === 'K' || input[i] === 'L') {
+    result = result + 6;
+  } else if (input[i] === 'M' || input[i] === 'N' || input[i] === 'O') {
+    result = result + 7;
+  } else if (input[i] === 'P' || input[i] === 'Q' || input[i] === 'R' || input[i] === 'S') {
+    result = result + 8;
+  } else if (input[i] === 'T' || input[i] === 'U' || input[i] === 'V') {
+    result = result + 9;
+  } else if (input[i] === 'W' || input[i] === 'X' || input[i] === 'Y' || input[i] === 'Z') {
+    result = result + 10;
+  }
+}
+
+console.log(result);
+
+
+// 9번 (크로아티아 알파벳)
+let input = require('fs').readFileSync('/dev/stdin').toString().trim();
+
+let croatia = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="];
+
+function solution(input) {
+  for (let alphabet of croatia) {
+    input = input.split(alphabet).join("A");
+  }
+
+  return input.length; // return input일 경우 QeQQak를 반환한다.
+}
+
+console.log(solution(input));
+
+
+// 10번 (그룹 단어 체커)
+let [N, ...arr] = require('fs').readFileSync('/dev/stdin').toString().trim().split("\n");
+
+let numWords = Number(N);
+let count = 0;
+
+for (let i = 0; i < numWords; i++) {
+  let newArr = [];
+  let nowArr = arr[i];
+
+  for (let j = 0; j < nowArr.length; j++) {
+    if (newArr.indexOf(nowArr[j]) === -1 || nowArr[j - 1] === nowArr[j]) {
+      newArr += nowArr.slice(j, j + 1);
+    } else {
+      break;
+    }
+  }
+
+  if (newArr.length === nowArr.length) {
+    count++;
+  }
+}
+
+console.log(count);
+
+

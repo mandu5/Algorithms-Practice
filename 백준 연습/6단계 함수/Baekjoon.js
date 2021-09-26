@@ -22,3 +22,26 @@ for (let i = 0; i < range; i++) {
         console.log(i);                        // true index만 출력
     }
 }
+
+
+// 2번 (한수)
+
+let [n] = require('fs').readFileSync('/dev/stdin').toString().trim().split(" ");
+ 
+let N = Number(n);
+let count = 0;
+
+for (let i = 1; i <= N; i++) {
+  let nArr = String(i);
+  if (i < 100) { // 100 미만은 전부 한수
+    count++;
+    continue;
+  }
+  let A = Number(nArr[0]) - Number(nArr[1]); // 첫 두 값의 차이
+  let B = Number(nArr[1]) - Number(nArr[2]); // 두번째와 세번째 값의 차이
+  if (A === B) { // 값의 차이가 같을시: 등차수열 = 한수
+    count++;
+  }
+}
+
+console.log(count);
