@@ -63,18 +63,18 @@ let newArr = arr.map((e) => e.split(" "));
 let nAnswer = "";
 
 for (let i = 0; i < nArrNumber; i++) {
-  let H = newArr[i][0],
-    N = newArr[i][2];
+    let H = newArr[i][0],
+        N = newArr[i][2];
 
-  let answerH = N % H;
-  if (answerH === 0) {
-    answerH = H;
-  }
+    let answerH = N % H;
+    if (answerH === 0) {
+        answerH = H;
+    }
 
-  let answerW = Math.ceil(N / H);
-  answerW < 10 ? (answerW = String(0) + answerW) : answerW;
+    let answerW = Math.ceil(N / H);
+    answerW < 10 ? (answerW = String(0) + answerW) : answerW;
 
-  nAnswer += `${answerH}${answerW}` + "\n";
+    nAnswer += `${answerH}${answerW}` + "\n";
 }
 
 console.log(nAnswer);
@@ -85,20 +85,20 @@ const input = require('fs').readFileSync('/dev/stdin').toString().split('\n');
 const T = Number(input.shift());
 
 for (let i = 0; i < T; i++) {
-  const k = +input.shift();
-  const n = +input.shift();
+    const k = +input.shift();
+    const n = +input.shift();
 
-  const house = Array.from(Array(k + 1), () => Array(n + 1).fill(0));// 각 방당 인원수를 저장할 배열 선언
-  
-  for (let i = 1; i <= n; i++) {   // 0층 (0층의 i호에는 i명이 산다)
-    house[0][i] = i;
-  }
-  for (let i = 1; i <= k; i++) {   // 1 ~ k층 
-    for (let j = 1; j <= n; j++) {
-      house[i][j] = house[i - 1][j] + house[i][j-1];
+    const house = Array.from(Array(k + 1), () => Array(n + 1).fill(0));// 각 방당 인원수를 저장할 배열 선언
+    
+    for (let i = 1; i <= n; i++) {   // 0층 (0층의 i호에는 i명이 산다)
+        house[0][i] = i;
     }
-  }
-  console.log(house[k][n]);  // k층 n호의 인원수 출력
+    for (let i = 1; i <= k; i++) {   // 1 ~ k층 
+        for (let j = 1; j <= n; j++) {
+            house[i][j] = house[i - 1][j] + house[i][j-1];
+        }
+    }
+    console.log(house[k][n]);  // k층 n호의 인원수 출력
 }
 
 // 7번 (설탕 배달)
@@ -107,18 +107,18 @@ let input = require('fs').readFileSync('/dev/stdin');
 let count = 0;
 
 while (true) {
-  if (input % 5 === 0) {
-    console.log(input / 5 + count);
-    break;
-  }
-    
-  if (0 > input) {
-    console.log(-1);
-    break;
-  }
+    if (input % 5 === 0) {
+        console.log(input / 5 + count);
+        break;
+    }
+        
+    if (0 > input) {
+        console.log(-1);
+        break;
+    }
 
-  count++;
-  input -= 3;
+    count++;
+    input -= 3;
 }
 
 
