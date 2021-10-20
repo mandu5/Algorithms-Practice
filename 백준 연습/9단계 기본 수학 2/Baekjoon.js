@@ -169,13 +169,15 @@ for (let i = 0; i < input.length; i++) {               // 테스트케이스 하
         console.log(`${a[0]} ${a[1]}`);                // 출력
     }
 }
-만약 가능한 n의 골드바흐 파티션이 여러 가지인 경우에는 두 소수의 차이가 가장 작은 것을 출력한다.
 
-이 부분을 만족시키려고 하다보니 많은 시간이 소요되었다.
 
-처음에는 주어진 수 - 소수가 소수인지 판별한 뒤 소수라면 바로 출력하였는데, 그럴 경우 두 소수의 차이가 큰 것이 출력되는 문제가 발생하였다.
+// 7번 (직사각형에서 탈출)
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split(" ").map(num => parseInt(num));
 
-가능한 골드바흐 파티션을 모두 구해 살펴보았더니, 10의 경우 [3, 7], [5, 5], [7, 3]이 나왔다. 여기서 문제는 [3, 7]과 대칭인 [7, 3]이었다. 필요하지 않은 연산을 더 하고 마지막 출력에 어려움을 주었기 때문에 for문의 조건을
+const x = input[0];
+const y = input[1];
+const w = input[2];
+const h = input[3];
+const counters = [x, y, w-x, h-y];
 
-for (let j = 0; prime[j] < num / 2 + 1; j++) {
-로 주어 대칭되는 파티션을 제거하였다. 그랬더니 가장 마지막에 있는 파티션이 두 소수의 차이가 가장 작은 것이었고, 출력할 때 마지막 파티션을 출력해주어 해결하였다.
+console.log(Math.min.apply(null, counters));
