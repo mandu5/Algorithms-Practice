@@ -171,7 +171,7 @@ for (let i = 0; i < input.length; i++) {               // 테스트케이스 하
 }
 
 
-// 7번 (직사각형에서 탈출)
+// 7번 (직사각형에서 탈출) (직사각형과 점의 거리를 구하는 문제)
 const input = require('fs').readFileSync('/dev/stdin').toString().trim().split(" ").map(num => parseInt(num));
 
 const x = input[0];
@@ -181,3 +181,55 @@ const h = input[3];
 const counters = [x, y, w-x, h-y];
 
 console.log(Math.min.apply(null, counters));
+
+
+// 8번 (네 번째 점) (직사각형을 완성하는 문제)
+let input = require('fs').readFileSync('/dev/stdin').toString().split("\n");
+let arrayX = [];
+let arrayY = [];
+let x;
+let y;
+for(let i = 0; i < 3; i++){  // input으로 받은 나머지 좌표들의 x,y좌표를 배열에 push
+    arrayX.push(Number(input[i].split(" ")[0]));
+    arrayY.push(Number(input[i].split(" ")[1]));
+}
+arrayX = arrayX.sort();     // 좌표들의 크기를 기준으로 배열 정렬
+arrayy = arrayY.sort();
+
+x = arrayX[0] === arrayX[1] ? arrayX[2] : arrayX[0];
+y = arrayY[0] === arrayY[1] ? arrayY[2] : arrayY[0];
+
+console.log(`${x} ${y}`);
+
+
+// 9번 (직각삼각형) (피타고라스 정리에 대해 배우는 문제)
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split("\n");
+
+input.some((v) => {
+    if (v === "0 0 0") return true; //break
+
+    const n = v.split(" ").map((v) => +v).sort((a,b) => a - b);
+
+    if (n[0] * n[0] + n[1] * n[1] === n[2] * n[2]) { // 아래 삼항연산자로 대체가능
+        console.log("right")
+    } else {
+        console.log("wrong")
+    }
+
+    // if else문 삼항연산자로 refactoring =>
+    (n[0] * n[0] + n[1] * n[1] === n[2] * n[2]) ? console.log("right") : console.log("wrong");
+})
+
+
+// 10번 (택시 기하학) (유클리드 기하학과 택시 기하학에 대한 문제)
+const input = require('fs').readFileSync('/dev/stdin').toString();
+
+const PI = Math.PI 
+const r = parseInt(input);
+
+console.log((PI * r * r).toFixed(6)); // 원의 넓이(유클리드 기하학)
+console.log((2 * r * r).toFixed(6));  // 택시 기하학에서의 원의 넓이
+
+
+// 11번 (터렛) (두 원의 교점의 개수를 구하는 문제)
+
