@@ -58,8 +58,13 @@ function solution(arr1, arr2) {
 
 
 // x만큼 간격이 있는 n개의 숫자
-
+function solution(x, n) { // if x = 2, n = 5, solution(x, n) = [2,4,6,8,10]
+    return Array(n).fill(x).map((v, i) => (i + 1) * v)
+}
 
 
 // 직사각형 별찍기
+function solution(a, b) {
+    return Array(b).fill().map(() => '*'.repeat(a)).join("\n");
+}
 
