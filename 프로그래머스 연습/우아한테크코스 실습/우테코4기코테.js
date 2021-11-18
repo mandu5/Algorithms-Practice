@@ -41,21 +41,19 @@ function solution(log){
     }
 
     for(i = 0; i < (log.length)/2; i++) {
-    let timeStart = convertH2M(start[i]); // 짝수 분
-    let timeEnd = convertH2M(end[i]);     // 홀수 분
-    let timeDiff = timeStart-timeEnd; 
-    if (timeDiff < 5)  timeDiff = 0;
-    if (timeDiff > 105)  timeDiff = 105;
-    answer.push(timeDiff);
+      let timeStart = convertH2M(start[i]); // 짝수 분
+      let timeEnd = convertH2M(end[i]);     // 홀수 분
+      let timeDiff = timeStart-timeEnd; 
+      if (timeDiff < 5)  timeDiff = 0;
+      if (timeDiff > 105)  timeDiff = 105;
+      answer.push(timeDiff);
     }
     answer = answer.reduce((sum,current) => sum+current);
     return timeConvert(answer);
-   
 }
 
 
 //3번
-
 let ings = ["r 10", "a 23", "t 124", "k 9"];
 ings = ings.join(",").replace(/ /g,"").split(",");
 ing1 = ings[0]
@@ -75,9 +73,6 @@ function integer(ing2){
     return answer;
 }
 console.log(integer(ing2));
-
-
-
 
 
 // 4번;
