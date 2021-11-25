@@ -19,7 +19,30 @@ for(let i = 0; i < N; i++){
 }
 console.log(answer);
 
+
 // 2번 (분해합) (모든 경우를 시도하여 N의 생성자를 구하는 문제)
+let input = require('fs').readFileSync("/dev/stdin").toString();
+const N = Number(input);
+let start = N - (String(N).length * 9);
+let M = start;
+let answer;
+while(true){
+    M++;
+    let sum = M;
+    for(let i = 0; i < String(M).length; i++){
+        sum = sum + Number(String(M).charAt(i));
+    }
+    if(sum === N){
+        answer = M;
+        break;
+    }
+    if(M >= N){
+        answer = 0;
+        break;
+    }
+}
+console.log(answer);
+
 // 3번 (덩치) (모든 사람을 비교하여 덩치 등수를 구하는 문제)
 // 4번 (체스판 다시 칠하기) (체스판을 만드는 모든 경우를 시도하여 최적의 방법을 찾는 문제)
 // 5번 (영화감독 슘) (N번째 종말의 수가 나올 때까지 차례대로 시도하는 문제)
