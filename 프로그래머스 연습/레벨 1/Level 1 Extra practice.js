@@ -83,3 +83,39 @@ function solution(answers) {
     return answer;
 }
 
+
+// 두 개 뽑아서 더하기 (월간 코드 챌린지 시즌 1)
+function solution(numbers) {
+    const answer = []
+  
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = i + 1; j < numbers.length; j++) { 
+            answer.push(numbers[i] + numbers[j]) 
+        }  
+    } 
+    return answer.sort((a, b) => a - b).filter((v, i) => v !== answer[i + 1]);
+}
+
+
+// 내적 (월간 코드 챌린지 시즌 1)
+function solution(a,b) {
+    return a.reduce((sum, cur, i) => sum + cur * b[i], 0);
+}
+
+
+// 음양 더하기 (월간 코드 챌린지 시즌 2)
+function solution(absolutes, signs) {
+    return absolutes.reduce(
+        (sum, cur, i) => sum + (cur * (signs[i] ? 1 : -1)), 0
+    );
+}
+
+
+// 약수의 개수와 덧셈 (월간 코드 챌린지 시즌 2)
+function solution(left, right) {
+    let answer = 0;
+    for (let i = left; i <= right; i++) {
+        if(Number.isInteger(Math.sqrt(i)) ? answer -= i : answer += i); // 약수의 개수가 홀수 : 짝수
+    }
+    return answer;
+}
