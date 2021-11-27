@@ -43,6 +43,17 @@ while(true){
 }
 console.log(answer);
 
+
 // 3번 (덩치) (모든 사람을 비교하여 덩치 등수를 구하는 문제)
+const [n, ...arr] = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
+const men = arr.map((v, i) => ({weight: v.split(" ")[0], height: v.split(" ")[1], rank: 1}));
+for (let i = 0; i < men.length; i++) {
+    for (let j = 0; j < men.length; j++) {
+        if (i !== j && men[i].weight < men[j].weight && men[i].height < men[j].height) men[i].rank++;
+    }
+}
+console.log(men.map(i => i.rank).join(" "));
+
+
 // 4번 (체스판 다시 칠하기) (체스판을 만드는 모든 경우를 시도하여 최적의 방법을 찾는 문제)
 // 5번 (영화감독 슘) (N번째 종말의 수가 나올 때까지 차례대로 시도하는 문제)

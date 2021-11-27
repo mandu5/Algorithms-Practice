@@ -17,7 +17,11 @@ function solution(s) {
 function solution(arr) {
     return arr.filter((v, i) => v !== arr[i + 1]); // 다음 숫자랑 같은 숫자 제거
 }
-  
+function solution(arr) { // 위와 동일하게 같은 중복 숫자 제거
+    const answer = [...new Set(arr)];
+    return answer;
+}
+
 
 // 나누어 떨어지는 숫자 배열
 function solution(arr, divisor) {

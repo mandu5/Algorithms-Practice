@@ -119,3 +119,48 @@ function solution(left, right) {
     }
     return answer;
 }
+
+
+// 나머지가 1이 되는 수 찾기 (월간 코드 챌린지 시즌 3)
+function solution(n) {
+    let answer = 0;
+    for (let i = 0; i <= n; i++, answer++) {
+        if(n % i === 1) break;
+    }
+    return answer;
+}
+
+
+// 없는 숫자 더하기 (월간 코드 챌린지 시즌 3)
+function solution(numbers) {
+    let answer = 0;
+    for (let i = 0; i < 10; i++) {
+        if(!numbers.includes(i)) answer += i;
+    }
+    return answer
+}
+function solution(numbers) {
+    return 45 - numbers.reduce((sum, cur) => sum + cur, 0); // 1~10까지의 합(45)을 나머지 숫자 합에서 빼기
+}
+
+
+// 부족한 금액 계산하기 (위클리 챌린지)
+function solution(price, money, count) {
+    let answer = 0;
+    for (let i = 0; i <= count; i++) {
+        answer += price * i
+    }
+    return answer > money ? answer - money : 0;
+}
+
+// 최소직사각형 (위클리 챌린지)
+function solution(sizes) {
+    const rotated = sizes.map(([w, h]) => w < h ? [h, w] : [w, h]); // 배열속 배열 크기비교 후 정렬
+
+    let maxSize = [0, 0];
+    rotated.forEach(([w, h]) => { // 각 배열 하나마다: forEach
+        if (w > maxSize[0]) maxSize[0] = w; // 비교하면서 max구하기
+        if (h > maxSize[1]) maxSize[1] = h;
+    })
+    return maxSize[0] * maxSize[1];
+}
