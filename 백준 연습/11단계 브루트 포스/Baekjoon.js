@@ -56,4 +56,34 @@ console.log(men.map(i => i.rank).join(" "));
 
 
 // 4번 (체스판 다시 칠하기) (체스판을 만드는 모든 경우를 시도하여 최적의 방법을 찾는 문제)
+let input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
+
+function solution(input) {
+    [size, ...arr] = input;
+    [row, col] = size.split(" ");
+    arr = arr.map(str => str.trim("r").split(""));
+
+    const answer = [];
+    const line = ["WBWBWBWB", "BWBWBWBW"];
+
+    for(let i = 0; i <= row - 8; i++) {     // i = x축-8, j = y축-8
+        for(let j = 0; j <= col - 8; j++) {
+            for(let z = 0; z < 2; z++) {    // 두 개의 경우의 수 를 위한 for문
+                let count = 0;
+
+                for(let x = 0; x < 8; x++) {  // 8*8 정사각형을 도는 for문
+                    for(let y = 0; y < 8; y++) {
+                        const current = arr[i + x][j + y];
+                        if(current !== line[(x + z) % 2][y]) count++
+                    }
+                }
+                answer.push(count);
+            }
+        }
+    }
+    return Math.min(...answer);
+}
+console.log(solution(input));
+
+
 // 5번 (영화감독 슘) (N번째 종말의 수가 나올 때까지 차례대로 시도하는 문제)
